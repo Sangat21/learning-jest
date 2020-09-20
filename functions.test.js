@@ -1,5 +1,32 @@
 const functions = require('./functions');
 
+/// before and after each test
+// beforeEach(() => initDatabase());
+// afterEach(() => closeDatabase());
+
+/// before and after all tests
+// beforeAll(() => initDatabase());
+// afterAll(() => closeDatabase());
+
+const nameCheck = ()=> console.log("Checking Name...");
+
+// doing beforeEach before certain tests only
+describe('Checking Names', () => {
+    beforeEach(() => nameCheck());
+    test('User is Jeff', () => {
+        const user = 'Jeff';
+        expect(user).toBe('Jeff')
+    });
+    test('User is Karen', () => {
+        const user = 'Karen';
+        expect(user).toBe('Karen')
+    })
+})
+
+
+const initDatabase = () => console.log("Database Initialized...");
+const closeDatabase = () => console.log("Database Closed...");
+
 // to be
 test('Adds 2 + 2 equal to 4', () => {
     expect(functions.add(2,2)).toBe(4);
@@ -48,7 +75,7 @@ test('Admin should be in usernames', () => {
 
 // working with JSON data (AXIOS)
 
-// Promise
+/// Promise
 // test('User fetched name should be Leanne Graham', () => {
 //     expect.assertions(1);
 //     return functions.fetchUser().then(data => {
